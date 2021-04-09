@@ -3,6 +3,7 @@ package JianZhiOffer;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 /**
  * 在一个长度为n的数组里的所有数字都在0到n-1的范围内。
  * 数组中某些数字是重复的，但不知道有几个数字是重复的。
@@ -34,7 +35,19 @@ public class JZ50 {
      *交换方法：时间复杂度On，空间O1
      */
     public int duplicate1 (int[] numbers){
+        int len = numbers.length;
+        if (len<=1)
+            return -1;
 
+        for(int i=0;i<len;i++){
+            while(numbers[i]!=i){
+                if(numbers[i]==numbers[numbers[i]])
+                    return numbers[i];
+                int j = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j]=j;
+            }
+        }
         return -1;
     }
 
@@ -47,6 +60,6 @@ public class JZ50 {
         for(int i=0;i<n;i++){
             a[i] = reader.nextInt();
         }
-        System.out.println(jz50.duplicate(a));
+        System.out.println(jz50.duplicate1(a));
     }
 }
